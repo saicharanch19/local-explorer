@@ -14,7 +14,7 @@ function App() {
     if (!loc) return alert("Please enter a location");
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/places?location=${loc}`);
+      const response = await axios.get(`https://local-explorer-2.onrender.com/api/places?location=${loc}`);
       const categorizedPlaces = {};
       Object.keys(response.data).forEach(category => {
         categorizedPlaces[category] = response.data[category].map(place => ({
@@ -38,10 +38,10 @@ function App() {
   const fetchPlaceDetails = async (placeId) => {
     try {
       const detailsResponse = await axios.get(
-        `http://localhost:5000/api/place-details?place_id=${placeId}`
+        `https://local-explorer-2.onrender.com/api/place-details?place_id=${placeId}`
       );
       const reviewsResponse = await axios.get(
-        `http://localhost:5000/api/place-reviews?place_id=${placeId}`
+        `https://local-explorer-2.onrender.com/api/place-reviews?place_id=${placeId}`
       );
       setSelectedPlace({
         ...detailsResponse.data,
